@@ -57,19 +57,20 @@ interactive_plot(data)
 # In[8]:
 
 
-st.header('Interactive Historgram')
+st.header('Histogram Via Type of Car and Price')
+color_opt=st.checkbox('Please select this checkbox if you want this graph to have color.')
+color ='type' if color_opt else None
+#determines if the graph has color
+
+hist =px.histogram(data_frame=data,x='type',y='price',color=color)
+
+st.plotly_chart(hist)
 
 
 # In[9]:
 
 
-def interactive_hist(data):
-    x_axis_val = st.selectbox('Select X-Axis Value', options=data.columns)
-    y_axis_val = st.selectbox('Select Y-Axis Value', options=data.columns)
-    
-    plot = px.histogram(data,x=x_axis_val,y=y_axis_val)
-    st.plotly_chart(plot)
-#This is a function that creates a histogram in which the user is able to choose the x and y axis based upon the columns in the data dataframe.
+#This is a function that creates a histogram in which the user is able to choose
 
 
 # In[10]:
