@@ -16,29 +16,10 @@ import streamlit as st
 data = pd.read_csv('/Users/coopermigden/data_sets/vehicles_us (1).csv')
 #Brings the data into the program
 
-data.describe
-#gives general information about the data and it shows how it looks
+
 # In[3]:
-data.isna().sum()
-#shows the amount of unknown values in each column
-
-columns_to_replace = ['model_year','cylinders','odometer','paint_color','is_4wd']
-for column in columns_to_replace:
-    data[column] = data[column].fillna('unknown')
-#to replace all NaN values with the word 'unknown'
-
-data.isna().sum()
-#check to see if the previous function worked
-
-data['model'].sort_values().unique()
-#went through list of model names to check if any are spelled incorrectly. none are spelled incorrectly.
-
-data.columns
-#determins the titles of the columns. Columns are in the appropriate snake_case
 
 
-data.to_csv('cleaned_vehicles_us.csv', index = True)
-#to create a new csv file for the cleaned data
 st.title('##Car Sales Data')
 
 
@@ -93,3 +74,7 @@ st.plotly_chart(hist)
 
 
 # In[10]:
+
+
+interactive_hist(data)
+
